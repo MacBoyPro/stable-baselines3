@@ -309,7 +309,7 @@ def save_to_zip_file(
         serialized_data = data_to_json(data)
 
     # Create a zip-archive and write our objects there.
-    with zipfile.ZipFile(save_path, mode="w") as archive:
+    with zipfile.ZipFile(save_path, mode="w", allowZip64=True) as archive:
         # Do not try to save "None" elements
         if data is not None:
             archive.writestr("data", serialized_data)
